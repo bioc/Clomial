@@ -1,0 +1,8 @@
+export(Clomial)
+export(choose.best)
+export(Clomial.generate.data)
+export(Clomial.iterate)
+export(compute.bic)
+export(Clomial.likelihood)
+import(methods)
+import(matrixStats)
