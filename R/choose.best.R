@@ -40,6 +40,7 @@ function(models,U=NULL,PTrue=NULL,compareTo=NULL,upto="All", doTalk=FALSE){
     if(class(models)=="list"){
       outI <- models[[JInd]]
     }else{
+      model <- NULL
       load(models[JInd]) ## model is loaded.
       outI <- model
     }
@@ -63,6 +64,7 @@ function(models,U=NULL,PTrue=NULL,compareTo=NULL,upto="All", doTalk=FALSE){
         if(class(compareTo)=="numeric"){
           compareToTry <- models[[compareTo]]
         } else {
+          model <- NULL
           load(models[compareTo]) ## model is loaded.
           compareToTry <- model
         }      
