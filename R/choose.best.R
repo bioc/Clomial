@@ -61,13 +61,13 @@ function(models,U=NULL,PTrue=NULL,compareTo=NULL,upto="All", doTalk=FALSE){
       ##
       if(!is.null(compareTo)){
         ## How different is each try from the best?
-        if(class(compareTo)=="numeric"){
+        if(class(models)=="list"){
           compareToTry <- models[[compareTo]]
         } else {
-          model <- NULL
-          load(models[compareTo]) ## model is loaded.
-          compareToTry <- model
-        }      
+          binomTries <- NULL
+          load(models[compareTo]) ## binomTries is loaded.
+          compareToTry <- binomTries[[1]]          
+        }
         computedDiff <- compute.errors(Mu=outI$Mu,U=compareToTry$Mu,P=outI$P,
                                        PTrue=compareToTry$P)
         diffBest[["U"]][J] <- computedDiff$UError
