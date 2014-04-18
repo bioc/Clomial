@@ -79,14 +79,14 @@ $\\$
 \texttt{biocLite("Clomial")}
 $\\$
 
-%%Alternative, if the source code is already available, 
-%%the package can be installed by the following command in Linux:
-%%\newline
-%%$\\$
-%%\texttt{R CMD INSTALL Clomial\_x.y.z.tar.gz}
-%%\newline
-%%$\\$
-%%where x.y.z. determines the version.
+Alternative, if the source code is already available, 
+the package can be installed by the following command in Linux:
+\newline
+$\\$
+\texttt{R CMD INSTALL Clomial\_x.y.z.tar.gz}
+\newline
+$\\$
+where x.y.z. determines the version.
 
 \subsection{A quick overview}
 The main function is \code{Clomial()} which takes as input 2 matrices 

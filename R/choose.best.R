@@ -39,10 +39,10 @@ function(models,U=NULL,PTrue=NULL,compareTo=NULL,upto="All", doTalk=FALSE){
     err[["P"]][J] <- NA
     if(class(models)=="list"){
       outI <- models[[JInd]]
-    }else{
-      model <- NULL
-      load(models[JInd]) ## model is loaded.
-      outI <- model
+    }else{ ## models is the vector of saved results.
+      binomTries <- NULL
+      load(models[JInd]) ## binomTries is loaded.
+      outI <- binomTries[[1]]
     }
     if( class(outI) != "try-error" ){
       LLI <- tail( outI[["Likelihoods"]], n = 1 )

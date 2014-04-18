@@ -29,7 +29,7 @@ doTalk=FALSE)
 }
   \item{DcDtFile}{
 	A file from which the data can optionally be loaded. It should
-	contain a the matrices Dc and Dt.
+	contain the matrices Dc and Dt.
 }
   \item{C}{
 	The assumed number of clones.
@@ -68,7 +68,7 @@ doTalk=FALSE)
 	priority of jobs over other submitted jobs.
 }
   \item{ignoredSample}{
-	A vector of samples indices which will be ignored in
+	A vector of indices of samples which will be ignored in
 	training. Used by experts only to measure the stability of the
 	results.
 }

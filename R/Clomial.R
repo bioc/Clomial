@@ -12,7 +12,7 @@ function(Dt=NULL,Dc=NULL,DcDtFile=NULL,
   result <- list()
   binomTries <- list() ##The results of EM iterations to fit the binomials.
   ## qstat commands:
-  qstatWait <- paste("qstat |grep ",jobNamePrefix,"|grep qw|wc -l",sep="")
+  qstatWaitCom <- paste("qstat |grep ",jobNamePrefix,"|grep qw|wc -l",sep="")
   qstatAll <- paste("qstat |grep ",jobNamePrefix,"|wc -l",sep="")
   ## Input check:
   if(is.null(Dt)|is.null(Dc)){ ## We expect to read it from file.
@@ -21,8 +21,15 @@ function(Dt=NULL,Dc=NULL,DcDtFile=NULL,
     if(!file.exists(DcDtFile))
       stop(paste("No data file at:",DcDtFile))
     load(DcDtFile) ## Dt and Dc are loaded.
+  }
+
+  ## Ignoring some samples?
+  if(length(ignoredSample)>0){
+    if(doTalk)
+      print(paste("These samples will be ignored:",ignoredSample))
     Dc <- Dc[,-ignoredSample]; Dt <- Dt[,-ignoredSample]
   }
+  
   N <- nrow(Dc)
   S <- ncol(Dc)
   freq1 <- Dt/Dc
@@ -61,10 +68,10 @@ function(Dt=NULL,Dc=NULL,DcDtFile=NULL,
       outPrefixJ <- paste(outPrefix,"/",tryName,sep="")
       while(TRUE){
         doSubmitNow <- TRUE
-        if((J%%10)==0){
+        if((J%%100)==0){
           totalJobsNum <- system(qstatAll,intern=TRUE)
           totalJobsNum <- as.numeric(totalJobsNum)
-          waitingJobsNum <- system(qstatWait,intern=TRUE)
+          waitingJobsNum <- system(qstatWaitCom,intern=TRUE)
           waitingJobsNum <- as.numeric(waitingJobsNum)
           if(waitingJobsNum > (1/2)*totalJobsNum+200){
             ## wait for some jobs to finish.

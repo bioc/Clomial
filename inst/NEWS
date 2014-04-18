@@ -1,6 +1,15 @@
 Package: Clomial
 ====================
 
+Version: 1.1.2 [2014-04-18]
+o Some bugs fixed regarding ignoring samples.
+o Some bugs fixed regarding loading saved results when running in parallel.
+o Some typos fixed in the man files. 
+o More efficient job submissions.
+
+Version: 1.1.0 [2014-03-11]
+o Approved by Bioconductor. 
+
 Version: 0.99.0 [2014-02-11]
 o Under review by Bioconductor.
 o Created. 
