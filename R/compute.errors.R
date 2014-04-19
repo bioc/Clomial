@@ -6,8 +6,12 @@ function(Mu,U,P,PTrue){
   ## P and Mu: inferred.
   ## PTrue and U: the truth.
   ##
-  allPerms <- rbind( 1:ncol(Mu), allPerms(ncol(Mu)))
-  reordered <- reorder.clones(U=U,PTrue=PTrue,Mu=Mu,P=P, allPerms=allPerms)
+  C <- ncol(Mu)
+  if(C>7){
+    stop("Too many clones to consider all permutations!")
+  }
+  allPermS <- rbind( 1:C, permute::allPerms(C))
+  reordered <- reorder.clones(U=U,PTrue=PTrue,Mu=Mu,P=P, allPermS=allPermS)
   Mu <- reordered[["Mu"]]
   P <- reordered[["P"]]
   ##  

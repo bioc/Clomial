@@ -6,6 +6,7 @@ o Some bugs fixed regarding ignoring samples.
 o Some bugs fixed regarding loading saved results when running in parallel.
 o Some typos fixed in the man files. 
 o More efficient job submissions.
+o The function compute.errors() is now exported, and can be accessed by the user. 
 
 Version: 1.1.0 [2014-03-11]
 o Approved by Bioconductor. 
