@@ -1,5 +1,10 @@
 Clomial.generate.data <-
-function(N, C, S, averageCoverage, mutFraction,doSample1Normal=FALSE){
+function(N, C, S, averageCoverage, mutFraction,doSample1Normal=FALSE, erroRate=0){
+  ##
+  ## QC:
+  if(erroRate<0 | 1<erroRate )
+    stop("erroRate is the probability of effective sequencing error,
+ and should be in range [0,1]!")
   ## Randomly assign N*S*averageCoverage reads to each locus and sample
   Dc <- matrix(0,N,S)
   rnums <- floor( runif( averageCoverage*N*S )*N*S )
@@ -38,14 +43,16 @@ function(N, C, S, averageCoverage, mutFraction,doSample1Normal=FALSE){
   ##
   ## Dt is the expected value of the binary distribution given U*P and Dc
   ##
-  X <- (U/2)%*%PTrue ## /2 because of heterozygosity 
-  Dt <- floor(Dc * X) ## uncommented by Habil.
+  Phi <- (U/2)%*%PTrue ## /2 because of heterozygosity 
+  Dt <- floor(Dc * Phi) ## Only initiates Dt.
   ##
   ## Dt is random samples of the binary distribution given U*P and Dc
   if(TRUE ){
     for( i in 1:N ){
       for( t in 1:S ){
-        Dt[i,t] <- rbinom(1,Dc[i,t],X[i,t])		
+        noisyPhi <- Phi[i,t]*(1-2*erroRate) + erroRate
+        ##^ phi*(1-e)+(1-phi)*e
+        Dt[i,t] <- rbinom(1,Dc[i,t],noisyPhi)
       }
     }
   }
@@ -58,6 +65,7 @@ function(N, C, S, averageCoverage, mutFraction,doSample1Normal=FALSE){
   data[["U"]] <- U
   data[["PTrue"]] <- PTrue
   data[["Likelihood"]] <- Clomial.likelihood(Dc,Dt,U,PTrue)$ll
+  data[["Phi"]] <- Phi
   ##
   return(data)
 }

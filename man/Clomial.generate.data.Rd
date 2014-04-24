@@ -11,7 +11,7 @@
 }
 \usage{
 Clomial.generate.data(N, C, S, averageCoverage, mutFraction,
-doSample1Normal = FALSE)
+doSample1Normal = FALSE,erroRate=0)
 }
 \arguments{
   \item{N}{
@@ -35,6 +35,12 @@ doSample1Normal = FALSE)
     the normal sample. I.e. the first column of the generated \code{P}
     matrix will start with 1, and the rest of its entries will be equal to 0. 
 }
+  \item{erroRate}{
+    The sequencing noise can be simulated by assigning a positive value
+    to this parameter, which is the probability of reading a normal
+    allele as the alternative allele, and vica versa.
+}
+
 }
 \details{
 See the reference below for details.
@@ -50,6 +56,9 @@ A list will be made with the following entries:
 	\item{U }{The true genotype matrix used for generating the data.}
 	\item{Likelihood }{The log-likelihood of the model with the
 	  true parameters.}
+	\item{Phi}{The matrix of the second parameters of the binomial
+	  distributions; each entry is the probability that a read
+	  contains the variant allele at a locus in a sample.}
 }
 \references{
   Inferring clonal composition from multiple sections of a breast cancer,

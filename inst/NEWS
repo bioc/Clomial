@@ -1,6 +1,9 @@
 Package: Clomial
 ====================
 
+Version: 1.1.7 [2014-04-24]
+o The function Clomial.generate.data() can now model sequencing error.
+
 Version: 1.1.2 [2014-04-18]
 o Some bugs fixed regarding ignoring samples.
 o Some bugs fixed regarding loading saved results when running in parallel.
