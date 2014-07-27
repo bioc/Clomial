@@ -1,6 +1,9 @@
 Package: Clomial
 ====================
 
+Version: 1.1.9 [2014-07-26]
+o Adding QC for the situation when only 1 sample is provided.
+
 Version: 1.1.7 [2014-04-24]
 o The function Clomial.generate.data() can now model sequencing error.
 

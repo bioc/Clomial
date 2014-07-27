@@ -186,7 +186,7 @@ and number on samples.
 \section{Reference}
 Zare et al., \textbf{
 Inferring clonal composition from multiple sections of a breast cancer},
-Under review.
+PLoS Comput Biol 10(7): e1003703.
 
 
 \end{document}

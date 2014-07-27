@@ -29,15 +29,30 @@ function(Dt=NULL,Dc=NULL,DcDtFile=NULL,
       print(paste("These samples will be ignored:",ignoredSample))
     Dc <- Dc[,-ignoredSample]; Dt <- Dt[,-ignoredSample]
   }
-  
+
+  Dc <- as.matrix(Dc)
+  Dt <- as.matrix(Dt)
   N <- nrow(Dc)
   S <- ncol(Dc)
+  ## QC,
+  if( (nrow(Dt)!=N) | (ncol(Dt)!=S) )
+    stop("Dc and Dt should have the same dimension!")
+  if( S<2 ){
+    m1 <- "At least 2 samples are needed to run Clomial!"
+    m2 <- "A normal sample can be simulated by adding"
+    m3 <- "a column of 1s and 0s to Dc and Dt, accordingly."
+   stop(paste(m1,m2,m3))
+  }
+  if(maxIt<3){
+    stop("It is recommended to have at least 3 iterations (maxIt>2) !")
+  }
+  ##
   freq1 <- Dt/Dc
   for(J in 1:binomTryNum){
     if(doTalk)
       print(paste("--- Training the ",J,"th model...",sep=""))
     if(!doParal){
-      ## Random initializztion:
+      ## Random initialization:
       random1 <- runif(n=N*(C-1),min=rowMins(freq1)*0.9,max=rowMaxs(freq1)*1.1)
       random1[random1>1] <- 1
       random1[random1<0] <- 0

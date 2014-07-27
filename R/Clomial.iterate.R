@@ -27,6 +27,9 @@ function(Dt, Dc, Mu, P, maxIt=100, U=NULL, PTrue=NULL,
   ##^ Set to 0 to disable  
   ## conservative: Injects the noise only if the likelihood improves after
   ## an iteration.
+  if(maxIt<3){
+    stop("It is recommended to have at least 3 iterations (maxIt>2) !")
+  }
   N <- nrow(Mu)
   C <- ncol(Mu)
   S <- ncol(P)
