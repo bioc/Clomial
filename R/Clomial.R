@@ -48,12 +48,15 @@ function(Dt=NULL,Dc=NULL,DcDtFile=NULL,
   }
   ##
   freq1 <- Dt/Dc
+  if(0 %in% rowSums(Dc)){
+      stop("Some rows of Dc are zero!")
+  }
   for(J in 1:binomTryNum){
     if(doTalk)
       print(paste("--- Training the ",J,"th model...",sep=""))
     if(!doParal){
       ## Random initialization:
-      random1 <- runif(n=N*(C-1),min=rowMins(freq1)*0.9,max=rowMaxs(freq1)*1.1)
+      random1 <- runif(n=N*(C-1),min=rowMins(freq1,na.rm=TRUE)*0.9,max=rowMaxs(freq1,na.rm=TRUE)*1.1)
       random1[random1>1] <- 1
       random1[random1<0] <- 0
       Mu <- matrix(random1,N,C-1)

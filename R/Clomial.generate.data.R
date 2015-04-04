@@ -1,15 +1,21 @@
 Clomial.generate.data <-
-function(N, C, S, averageCoverage, mutFraction,doSample1Normal=FALSE, erroRate=0){
-  ##
-  ## QC:
+function(N, C, S, averageCoverage, mutFraction,doSample1Normal=FALSE, erroRate=0, doCheckDc=TRUE){
+    ##
+    ## doCheckDc: If TRUE, generating with be repeated until no row of Dc is all zeros
+    ##^I.e. all loci should have positive coverage in at least one sample.
+    ## QC:
   if(erroRate<0 | 1<erroRate )
     stop("erroRate is the probability of effective sequencing error,
  and should be in range [0,1]!")
   ## Randomly assign N*S*averageCoverage reads to each locus and sample
   Dc <- matrix(0,N,S)
-  rnums <- floor( runif( averageCoverage*N*S )*N*S )
-  for( i in rnums ){
-    Dc[i+1] <- Dc[i+1]+1
+  while(TRUE){
+      rnums <- floor( runif( averageCoverage*N*S )*N*S )
+      for( i in rnums ){
+          Dc[i+1] <- Dc[i+1]+1
+      }
+      if(sum(rowSums(Dc)==0)==0 | !doCheckDc)
+          break
   }
   ##
   ## Generate U such that the first column is 0s 

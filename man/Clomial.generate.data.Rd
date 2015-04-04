@@ -11,7 +11,7 @@
 }
 \usage{
 Clomial.generate.data(N, C, S, averageCoverage, mutFraction,
-doSample1Normal = FALSE,erroRate=0)
+doSample1Normal = FALSE,erroRate=0,doCheckDc=TRUE)
 }
 \arguments{
   \item{N}{
@@ -39,6 +39,10 @@ doSample1Normal = FALSE,erroRate=0)
     The sequencing noise can be simulated by assigning a positive value
     to this parameter, which is the probability of reading a normal
     allele as the alternative allele, and vica versa.
+}
+  \item{doCheckDc}{
+  If TRUE, generating with be repeated until no row of Dc is all zeros to guarantee
+  all loci have positive coverage in at least one sample.
 }
 
 }
