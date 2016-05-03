@@ -87,6 +87,8 @@ $\\$
 \newline
 $\\$
 where x.y.z. determines the version.
+The second approach requires all the dependencies be installed manually, 
+therefore, the first approach is preferred.
 
 \subsection{A quick overview}
 The main function is \code{Clomial()} which takes as input 2 matrices 
