@@ -34,7 +34,7 @@ Maintainer: Habil Zare <zare@u.washington.edu>
 }
 \references{
   Inferring clonal composition from multiple sections of a breast cancer,
-  Zare et al., Submitted.
+  Zare et al., PLoS Computational Biology 10.7 (2014): e1003703.
 }
 \keyword{ package }
 \keyword{ datasets }
