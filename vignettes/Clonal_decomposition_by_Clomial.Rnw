@@ -74,9 +74,10 @@ Clomial is an R package source that can be downloaded and
 installed from BioCunductor by the followig commands in R:
 \newline
 $\\$
-\texttt{source("http://bioconductor.org/biocLite.R")}
+\texttt{if (!requireNamespace("BiocManager", quietly=TRUE))}
+    install.packages("BiocManager")}
 \newline
-\texttt{biocLite("Clomial")}
+\texttt{BiocManager::install("Clomial")}
 $\\$
 
 Alternative, if the source code is already available, 
