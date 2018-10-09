@@ -1,7 +1,7 @@
 Package: Clomial
 Type: Package
 Title: Infers clonal composition of a tumor
-Version: 1.17.3
+Version: 1.17.4
 Date: 2018-05-31
 Author: Habil Zare and Alex Hu
 Maintainer: Habil Zare <zare@u.washington.edu>

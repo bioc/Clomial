@@ -71,10 +71,10 @@ the methodology, and the results on the real data set.
 \section{How to run Clomial?}
 \subsection{Installation}
 Clomial is an R package source that can be downloaded and 
-installed from BioCunductor by the followig commands in R:
+installed from Bioconductor with the following commands in R:
 \newline
 $\\$
-\texttt{if (!requireNamespace("BiocManager", quietly=TRUE))}
+\texttt{if (!requireNamespace("BiocManager", quietly=TRUE))
     install.packages("BiocManager")}
 \newline
 \texttt{BiocManager::install("Clomial")}
