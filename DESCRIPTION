@@ -1,7 +1,7 @@
 Package: Clomial
 Type: Package
 Title: Infers clonal composition of a tumor
-Version: 1.19.0
+Version: 1.19.2
 Date: 2018-05-31
 Author: Habil Zare and Alex Hu
 Maintainer: Habil Zare <zare@u.washington.edu>
@@ -14,5 +14,5 @@ Description: Clomial fits binomial distributions to counts obtained
 License: GPL (>= 2)
 biocViews: Genetics, GeneticVariability, Sequencing, Clustering,
         MultipleComparison, Bayesian, DNASeq, ExomeSeq,
-        TargetedResequencing
+        TargetedResequencing, ImmunoOncology
 LazyLoad: yes
